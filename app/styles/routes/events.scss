@@ -1,0 +1,16 @@
+.admin-events {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  
+  .song-lists {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .all-songs,
+    .event-songs {
+      padding: 8px;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<div class="admin-events">
+  <div class="left-nav">
+    {{#bs-nav type="tabs" stacked=true  as |nav|}}
+      {{#each sortedEvents as |event|}}
+        {{#nav.item}}
+          {{#nav.link-to "events.show" event.id}}
+            {{moment-format event.eventDate 'MM-DD-YYYY'}} - {{event.location}}
+          {{/nav.link-to}}
+        {{/nav.item}}
+      {{/each}}
+    {{/bs-nav}}
+  </div>
+
+
+  {{outlet}}
+</div>

@@ -1,0 +1,32 @@
+.performances {
+  .now-playing,
+  .up-next {
+    .singer-name,
+    .song-title {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  .now-playing {
+    .singer-name,
+    .song-title {
+      h1 {
+        font-size: 6em;
+      }
+      h2 {
+        font-size: 3em;
+      }
+    }
+  }
+
+
+  .play-list {
+    th, td {
+      padding: 8px 16px;
+    }
+  }
+
+
+}

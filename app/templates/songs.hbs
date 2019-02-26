@@ -1,0 +1,28 @@
+Admin Songs Page
+
+<table>
+  <thead>
+    <th>Title</th>
+    <th>
+      {{#bs-dropdown as |dd|}}
+        {{#dd.button}}Artist <span class="caret"></span>{{/dd.button}}
+        {{#dd.menu as |menu|}}
+          {{#menu.item}}<div>one choice</div>{{/menu.item}}
+          {{#menu.item}}<div>two choice</div>{{/menu.item}}
+        {{/dd.menu}}
+      {{/bs-dropdown}}
+    </th>
+    <th>Tab</th>
+  </thead>
+  <tbody>
+  {{#each this.model as |song|}}
+    <tr>
+    <td>{{song.title}}</td>
+    <td>{{song.artist}}</td>
+    <td><a target=blank href={{song.tabUrl}}>{{song.tabUrl}}</a></td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
+
+{{outlet}}

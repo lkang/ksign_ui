@@ -1,0 +1,126 @@
+
+<div class="performances">
+  Performances
+
+  {{#bs-tab as |tab|}}
+    {{#tab.pane title="Now Playing" class="now-playing"}}
+      <div class="singer-name"><h1>{{nowPlaying.singer}}</h1></div>
+      <div class="song-title"><h2>{{nowPlaying.eventsSong.song.title}}</h2></div>
+    {{/tab.pane}}
+  {{/bs-tab}}
+
+
+  {{#bs-tab as |tab|}}
+    {{#tab.pane title="Up Next" class="up-next"}}
+      <div class="singer-name"><h1>{{upNext.singer}}</h1></div>
+      <div class="song-title"><h2>{{upNext.eventsSong.song.title}}</h2></div>
+    {{/tab.pane}}
+  {{/bs-tab}}
+
+  {{#bs-button onClick=(action (mut modal3) true)}}
+    Sign Me Up
+  {{/bs-button}}
+
+  {{#bs-modal
+      open=modal3
+      onSubmit=(action "submit")
+      onHidden=(action (mut modal3) false) as |modal|}}
+    {{#modal.header}}
+      <h3 class="modal-title">
+        Sign Up To Sing
+      </h3>
+    {{/modal.header}}
+    {{#modal.body}}
+      <input type="text" autofocus="autofocus">
+
+      {{#power-select
+        options=signupList
+        searchField="title"
+        selected=selected
+        onchange=(action "selectSong") as |song|}}
+        {{song.title}}
+      {{/power-select}}
+
+    {{/modal.body}}
+    {{#modal.footer}}
+      {{#bs-button type="success" onClick=(action modal.submit)}}Save{{/bs-button}}
+    {{/modal.footer}}
+  {{/bs-modal}}
+
+
+  {{#bs-tab as |tab|}}
+    {{#tab.pane title="Up Next" class="play-list"}}
+      <table>
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>Singer</th>
+            <th>Song</th>
+            <th>Start Time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each pendingList as |performance index|}}
+            <tr>
+              <td>{{performance.order}}</td>
+              <td>{{performance.singer}}</td>
+              <td>{{performance.eventsSong.song.title}}</td>
+              <td>{{performance.startTime}}</td>
+              {{#if (eq index 0)}}
+                <td>Playing</td>
+              {{else}}
+                <td>{{performance.statusMessage}}</td>
+              {{/if}}
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{/tab.pane}}
+    {{#tab.pane title="All Done" class="play-list"}}
+      <table>
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>Singer</th>
+            <th>Song</th>
+            <th>Start Time</th>
+            <th>Status</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each completedList as |performance|}}
+            <tr>
+              <td>{{performance.order}}</td>
+              <td>{{performance.singer}}</td>
+              <td>{{performance.eventsSong.song.title}}</td>
+              <td>{{performance.startTime}}</td>
+              <td>{{performance.statusMessage}}</td>
+              <td>92.3</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{/tab.pane}}
+    {{#tab.pane title="Sign Up" class="play-list"}}
+      <table>
+        <thead>
+          <tr>
+            <th>Song</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each signupList as |song|}}
+            <tr>
+              <td>{{song.title}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{/tab.pane}}
+  {{/bs-tab}}
+
+
+  {{outlet}}
+</div>

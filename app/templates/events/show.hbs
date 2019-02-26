@@ -1,0 +1,25 @@
+<div class="songs-container">
+  <div class="song-lists">
+    <div class="all-songs">
+      ****** Drag songs from this list ******
+      {{#draggable-dropzone dropped="removeSong"}}
+        {{#each unchosenSongs as |song|}}
+          {{#draggable-item content=song.id}}
+            {{song.title}}
+          {{/draggable-item}}
+        {{/each}}
+      {{/draggable-dropzone}}
+    </div>
+
+    <div class="event-songs">
+      {{#draggable-dropzone dropped="addSong"}}
+        ****** Drop the song here to add it to the event ******
+        {{#each model.event.songs as |song|}}
+          {{#draggable-item content=song.id}}
+            {{song.title}}
+          {{/draggable-item}}
+        {{/each}}
+      {{/draggable-dropzone}}
+    </div>
+  </div>
+</div>

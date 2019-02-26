@@ -1,0 +1,9 @@
+Admin EventsSongs Page
+
+<ul>
+  {{#each this.model as |eventsSong|}}
+    <li>{{eventsSong.event.eventDate}} {{eventsSong.event.location}}: {{eventsSong.song.title}}</li>
+  {{/each}}
+</ul>
+
+{{outlet}}
