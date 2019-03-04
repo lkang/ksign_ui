@@ -1,7 +1,18 @@
 # ksign-ui
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Karaoke Sign Up UI
+
+This is the UI for a Live Band Karaoke Website. The backend is at https://github.com/lkang/ksign_api
+
+To run this UI with the backend (localhost:3000) on your machine:
+
+ember server --proxy http://localhost:3000
+
+Go to http://localhost:4200 to see the UI. 
+
+/songs - All the songs in the database
+/events - Create an event, decide which songs will be available for the event.
+/performances - Use this URL the day of the show.  Sign up for songs here. 
 
 ## Prerequisites
 
